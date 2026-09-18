@@ -18,10 +18,10 @@ const handleClick3 = (e) => {
 }
     return(
         <main>
-            <p onDoubleClick={handleClick()}>
+            <p onDoubleClick={handleClick}>
                 Hello {name}!
             </p>
-            <button onClick={handleNameChange()}>change Name</button>
+            <button onClick={handleNameChange}>change Name</button>
             <button onClick={() => handleClick2('Peter')}>Click Me</button>
             <button onClick={(e) =>{handleClick3(e)}}>Click me</button>
         </main>
