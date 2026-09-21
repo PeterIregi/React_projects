@@ -10,7 +10,7 @@ const Content = () => {
         },
         {
             id: 2,
-            checked: false,
+            checked: true,
             item: "Item 2"
         },
         {
@@ -19,6 +19,10 @@ const Content = () => {
             item: "Item 3"
         }
     ]);
+    const handleCheck = (id)=>{
+        const listItems = items.map((item) => item.id === id ? {...item, checked: !item.checked } :item);
+        setItems(listItems);
+    }
      
     
     return(
@@ -29,6 +33,7 @@ const Content = () => {
                     <input
                     type="checkbox"
                     checked={item.checked}
+                    onChange={()=>(handleCheck(item.id))}
                     />
                     <label> {item.item}</label>
                     <FaTrashAlt 
