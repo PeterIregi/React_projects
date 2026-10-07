@@ -24,10 +24,16 @@ const Content = () => {
         setItems(listItems);
         localStorage.setItem('shoppinglist', JSON.stringify(listItems));
     }
+
+    const handleDelete = (id)=>{
+        const listItem = items.filter((item)=> item.id !== id);
+        localStorage.setItem('shoppinglist' ,JSON.stringify(listItems));
+    }
      
     
     return(
         <main>
+            {items.length ? (
            <ul>
             {items.map((item) =>(
                 <li className="item" key={item.id}>
@@ -41,12 +47,22 @@ const Content = () => {
                         style={(item.checked)? { textDecoration:'line-through'} : null}
                     > {item.item}</label>
                     <FaTrashAlt 
+                    onclick={()=>handleDelete(item.id)}
                     role="button" 
                     tabIndex="0"
                     />
                 </li>
             ))}
            </ul>
+            ) : (
+                <p
+                style={
+                    {marginTop: '2rem'}
+                }
+                >Your list is Empty
+
+                </p>
+            )}
             
         </main>
     )
