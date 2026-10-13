@@ -2,23 +2,26 @@ import { useState } from 'react' ;
 import { FaTrashAlt } from 'react-icons/fa';
 
 const Content = () => {
-    const [items ,setItems] = useState([
-        {
-            id: 1,
-            checked: false,
-            item: "One half pound of Cocoa Covered Almonds Unsalted"
-        },
-        {
-            id: 2,
-            checked: true,
-            item: "Item 2"
-        },
-        {
-            id: 3,
-            checked: false,
-            item: "Item 3"
-        }
-    ]);
+    const [items ,setItems] = useState(() => {
+        const saved = localStorage.getItem('shoppinglist');
+        return saved ? JSON.parse(saved) : [
+            {
+                id: 1,
+                checked: false,
+                item: "One half pound of Cocoa Covered Almonds Unsalted"
+            },
+            {
+                id: 2,
+                checked: true,
+                item: "Item 2"
+            },
+            {
+                id: 3,
+                checked: false,
+                item: "Item 3"
+            }
+        ];
+    });
     const handleCheck = (id)=>{
         const listItems = items.map((item) => item.id === id ? {...item, checked: !item.checked } :item);
         setItems(listItems);
@@ -26,7 +29,8 @@ const Content = () => {
     }
 
     const handleDelete = (id)=>{
-        const listItem = items.filter((item)=> item.id !== id);
+        const listItems = items.filter((item)=> item.id !== id);
+        setItems(listItems);
         localStorage.setItem('shoppinglist' ,JSON.stringify(listItems));
     }
      
@@ -47,7 +51,7 @@ const Content = () => {
                         style={(item.checked)? { textDecoration:'line-through'} : null}
                     > {item.item}</label>
                     <FaTrashAlt 
-                    onclick={()=>handleDelete(item.id)}
+                    onClick={()=>handleDelete(item.id)}
                     role="button" 
                     tabIndex="0"
                     />
