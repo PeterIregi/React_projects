@@ -1,10 +1,14 @@
-const Header = () => {
+const Header = ({title= "Default Title"}) => {
     return (
         <header >
             <h1>
-                Groceries list
+                {title}
             </h1>
         </header>
     )
 }
-export default Header
+
+Header.defaultProps = {
+    title: "Default Title" 
+}
+export default Header; 
