@@ -1,24 +1,7 @@
 import { useState } from 'react' ;
 import { FaTrashAlt } from 'react-icons/fa';
 
-const Content = () => {
-    const [items ,setItems] = useState([
-        {
-            id: 1,
-            checked: false,
-            item: "One half pound of Cocoa Covered Almonds Unsalted"
-        },
-        {
-            id: 2,
-            checked: true,
-            item: "Item 2"
-        },
-        {
-            id: 3,
-            checked: false,
-            item: "Item 3"
-        }
-    ]);
+const Content =({items, setItems})=>{
     const handleCheck = (id)=>{
         const listItems = items.map((item) => item.id === id ? {...item, checked: !item.checked } :item);
         setItems(listItems);
@@ -67,5 +50,6 @@ const Content = () => {
             
         </main>
     )
-}
+    }
+
 export default Content
