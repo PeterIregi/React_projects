@@ -1,12 +1,12 @@
 import { FaTrashAlt } from 'react-icons/fa';
 
-const LineItem = (item, handleCheck, handleDelete) => {
+const LineItem = ({item, handleCheck, handleDelete}) => {
     return (
         <li className="item" key={item.id}>
             <input
                 type="checkbox"
                 checked={item.checked}
-                onChange={()=>(handleCheck(item.id))}
+                onChange={()=>(handleCheck(item .id))}
             />
             <label 
                 onDoubleClick={()=>handleCheck(item.id)}
