@@ -1,5 +1,8 @@
 {
   "devDependencies": {
     "react-icons": "^5.7.0"
+  },
+  "dependencies": {
+    "save-prod": "^1.0.0"
   }
 }
