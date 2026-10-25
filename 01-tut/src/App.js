@@ -25,6 +25,12 @@ function App() {
     ]);
 
     const [newItem, setNewItem]  = useState("")
+    const addItem = (Item) => {
+        const id = items.length ? items[items.length-1].id +1 : 1;
+        const myNewItem = {id, checked: false, item};
+        const listItems = [...items, myNewItem];
+
+    }
     const handleCheck = (id)=>{
         const listItems = items.map((item) => item.id === id ? {...item, checked: !item.checked } :item);
         setItems(listItems);
@@ -38,7 +44,10 @@ function App() {
     }
 
     const handleSubmit = (e) =>{
-        console.log("Submitted")
+        e.preventDefault();
+        if (newItem) return;
+        setNewItem("");
+        
     }
 
   return (
