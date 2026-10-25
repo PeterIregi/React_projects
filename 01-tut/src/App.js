@@ -6,7 +6,7 @@ import Footer from './Footer';
 import { useState } from 'react';
 
 function App() { 
-    const [items ,setItems] = useState([
+    const [items ,setNewItems] = useState([
         {
             id: 1,
             checked: true,
@@ -23,6 +23,8 @@ function App() {
             item: "Item 3"
         }
     ]);
+
+    const [newItem, setNewItem]  = useState("")
     const handleCheck = (id)=>{
         const listItems = items.map((item) => item.id === id ? {...item, checked: !item.checked } :item);
         setItems(listItems);
@@ -35,10 +37,18 @@ function App() {
         localStorage.setItem('shoppinglist' ,JSON.stringify(listItems));
     }
 
+    const handleSubmit = (e) =>{
+        console.log("Submitted")
+    }
+
   return (
     <div className="App">
     <Header title="Groceries list"/>
-    <AddItem />
+    <AddItem 
+    newItem={newItem}
+    setNewItem={setNewItem}
+    handleSubmit={handleSubmit}
+    />
     <Content 
       items={items}
       
