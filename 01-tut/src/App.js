@@ -24,24 +24,28 @@ function App() {
         }
     ]);
 
+    const setAndSaveItems = (newItems)=>{
+        setItems(listItems);
+        localStorage.setItem('shoppinglist', JSON.stringify(listItems));
+    }
+    }
+
     const [newItem, setNewItem]  = useState("")
     const addItem = (Item) => {
         const id = items.length ? items[items.length-1].id +1 : 1;
         const myNewItem = {id, checked: false, item};
         const listItems = [...items, myNewItem];
+        setAndSaveItems();
 
     }
     const handleCheck = (id)=>{
         const listItems = items.map((item) => item.id === id ? {...item, checked: !item.checked } :item);
-        setItems(listItems);
-        localStorage.setItem('shoppinglist', JSON.stringify(listItems));
+        setAndSaveItems();
     }
 
     const handleDelete = (id)=>{
         const listItems = items.filter((item)=> item.id !== id);
-        setItems(listItems);
-        localStorage.setItem('shoppinglist' ,JSON.stringify(listItems));
-    }
+        setAndSaveItems();
 
     const handleSubmit = (e) =>{
         e.preventDefault();
