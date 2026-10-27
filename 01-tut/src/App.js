@@ -44,14 +44,15 @@ function App() {
   return (
     <div className="App">
     <Header title="Groceries list"/>
-    <SearchItem
-        search={search}
-        setSearch={setSearch}
-    />
+    
     <AddItem 
     newItem={newItem}
     setNewItem={setNewItem}
     handleSubmit={handleSubmit}
+    />
+    <SearchItem
+        search={search}
+        setSearch={setSearch}
     />
     <Content 
       items={items}
