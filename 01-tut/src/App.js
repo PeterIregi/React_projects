@@ -1,13 +1,14 @@
 
 import Header from './Header';
 import AddItem from './AddItem'
+import SearchItem from './SearchItem';
 import Content from './Content';
 import Footer from './Footer';
 import { useState } from 'react';
 
 function App() { 
     const [items ,setNewItems] = useState (JSON.parse(localStorage.getItem('shoppinglist')));
-
+    const [search, setSearch] = useState("");
     const setAndSaveItems = (newItems)=>{
         setNewItems(newItems)
         localStorage.setItem('shoppinglist', JSON.stringify(newItems));
@@ -43,6 +44,10 @@ function App() {
   return (
     <div className="App">
     <Header title="Groceries list"/>
+    <SearchItem
+        search={search}
+        setSearch={setSearch}
+    />
     <AddItem 
     newItem={newItem}
     setNewItem={setNewItem}
