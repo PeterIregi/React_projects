@@ -1,9 +1,18 @@
-const Input = ()=>{
+const Input = ({ colorValue, setColorValue })=>{
     return(
-        <div>
-           <h2>input</h2> 
+        <form
+            onSubmit={(e)=>e.preventDefault()}>
+                <label>Add Color Name</label>
+                <input
+                autoFocus
+                type="Text"
+                placeholder="Add Color Name"
+                required
+                value={colorValue}
+                onChange={(e)=> setColorValue(e.target.value)}
+                ></input>
 
-        </div>
+            </form>
     )
 }
 export default Input
