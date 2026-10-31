@@ -1,4 +1,4 @@
-const Square = ({ colorValue='Empty Color Value' }) => {
+const Square = ({ colorValue='Empty Color Value', hexValue }) => {
     return(
         <section
             className="square"
@@ -6,6 +6,7 @@ const Square = ({ colorValue='Empty Color Value' }) => {
         >
 
         <p>{colorValue ? colorValue : "Empty Value"}</p>
+        <p> { hexValue ? hexValue : null}</p>
         </section>
     )
 }
