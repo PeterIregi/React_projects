@@ -1,6 +1,6 @@
 import colorNames from 'colornames'
 
-const Input = ({ colorValue, setColorValue, setHexValue })=>{
+const Input = ({ colorValue, setColorValue, setHexValue, setIsDarkText, isDarkText })=>{
     return(
         <form
             onSubmit={(e)=>e.preventDefault()}>
@@ -17,6 +17,12 @@ const Input = ({ colorValue, setColorValue, setHexValue })=>{
 
                 }}
                 ></input>
+                <button
+                type="button"
+                onClick={()=>{setIsDarkText(!isDarkText)}}
+                >
+                    Toggle Text Color
+                </button>
 
             </form>
     )
