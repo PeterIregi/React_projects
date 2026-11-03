@@ -4,7 +4,8 @@ import AddItem from './AddItem'
 import SearchItem from './SearchItem';
 import Content from './Content';
 import Footer from './Footer';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
 
 function App() { 
     const [items ,setNewItems] = useState (JSON.parse(localStorage.getItem('shoppinglist')));
@@ -13,7 +14,7 @@ function App() {
         setNewItems(newItems)
         localStorage.setItem('shoppinglist', JSON.stringify(newItems));
     }
-    
+    useEffect(()=>{console.log("updating items state")},[items]);
 
     const [newItem, setNewItem]  = useState("")
     const addItem = (item) => {
