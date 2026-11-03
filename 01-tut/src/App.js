@@ -14,7 +14,13 @@ function App() {
         setNewItems(newItems)
         localStorage.setItem('shoppinglist', JSON.stringify(newItems));
     }
-    useEffect(()=>{console.log("updating items state")},[items]);
+    console.log("before useEffect");
+    useEffect(()=>{
+        console.log("updating items state");
+        console.log("inside useEffect");
+
+    },[items]);
+    console.log("after useEffect");
 
     const [newItem, setNewItem]  = useState("")
     const addItem = (item) => {
