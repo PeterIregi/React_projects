@@ -8,19 +8,17 @@ import { useState, useEffect } from 'react';
 
 
 function App() { 
-    const [items ,setNewItems] = useState (JSON.parse(localStorage.getItem('shoppinglist')));
+    const [items ,setNewItems] = useState ( JSON.parse(localStorage.getItem('shoppinglist')) || []);
     const [search, setSearch] = useState("");
     const setAndSaveItems = (newItems)=>{
         setNewItems(newItems)
         localStorage.setItem('shoppinglist', JSON.stringify(newItems));
     }
-    console.log("before useEffect");
+    
     useEffect(()=>{
-        console.log("updating items state");
-        console.log("inside useEffect");
-
+        setNewItems()
     },[items]);
-    console.log("after useEffect");
+    
 
     const [newItem, setNewItem]  = useState("")
     const addItem = (item) => {
