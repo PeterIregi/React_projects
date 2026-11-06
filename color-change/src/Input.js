@@ -1,4 +1,4 @@
-import colorNames from 'colornames'
+import colorNames from 'color-name'
 
 const Input = ({ colorValue, setColorValue, setHexValue, setIsDarkText, isDarkText })=>{
     return(
